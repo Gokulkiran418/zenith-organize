@@ -76,17 +76,20 @@ const DotGrid: React.FC<DotGridProps> = ({
     };
 
     const handleMouseMove = (e: MouseEvent) => {
+      console.log('Mouse move detected', e.clientX, e.clientY);
       const rect = container.getBoundingClientRect();
       mouseRef.current.prevX = mouseRef.current.x;
       mouseRef.current.prevY = mouseRef.current.y;
       mouseRef.current.x = e.clientX - rect.left;
       mouseRef.current.y = e.clientY - rect.top;
+      console.log('Mouse position:', mouseRef.current.x, mouseRef.current.y);
 
       const mouseSpeed = Math.sqrt(
         Math.pow(mouseRef.current.x - mouseRef.current.prevX, 2) +
         Math.pow(mouseRef.current.y - mouseRef.current.prevY, 2)
       );
 
+      console.log('Processing', dotsRef.current.length, 'dots');
       dotsRef.current.forEach((dot) => {
         const dotX = (dot as any).currentX;
         const dotY = (dot as any).currentY;
@@ -96,6 +99,7 @@ const DotGrid: React.FC<DotGridProps> = ({
         );
 
         if (distance < proximity) {
+          console.log('Dot within proximity, distance:', distance);
           const force = (proximity - distance) / proximity;
           const angle = Math.atan2(dotY - mouseRef.current.y, dotX - mouseRef.current.x);
           
@@ -222,7 +226,7 @@ const DotGrid: React.FC<DotGridProps> = ({
       className={`absolute inset-0 ${className}`}
       style={{
         zIndex: 1,
-        pointerEvents: 'none',
+        pointerEvents: 'auto',
         ...style,
       }}
     />
