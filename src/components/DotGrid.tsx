@@ -219,9 +219,10 @@ const DotGrid: React.FC<DotGridProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`fixed inset-0 pointer-events-none ${className}`}
+      className={`absolute inset-0 ${className}`}
       style={{
-        zIndex: -1,
+        zIndex: 1,
+        pointerEvents: 'none',
         ...style,
       }}
     />

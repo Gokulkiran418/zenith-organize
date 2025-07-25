@@ -77,7 +77,7 @@ const TaskDashboard = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-hero p-6">
+    <div className="relative min-h-screen bg-gradient-hero p-6 overflow-hidden">
       {/* Dot Grid Background */}
       <DotGrid 
         dotSize={3}
@@ -89,7 +89,7 @@ const TaskDashboard = () => {
         shockStrength={6}
       />
       
-      <div className="relative z-10 max-w-7xl mx-auto space-y-6">
+      <div className="relative z-20 max-w-7xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
